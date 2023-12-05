@@ -65,6 +65,7 @@
     "jest": "^27.3.0",
     "jest-environment-node": "^27.3.0",
     "postcss": "^8.4.32",
+    "postcss-import": "^15.1.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.1.0",
     "react-test-renderer": "^17.0.2",

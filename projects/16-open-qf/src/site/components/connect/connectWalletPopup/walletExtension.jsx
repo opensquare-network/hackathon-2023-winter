@@ -13,8 +13,6 @@ const Wrapper = tw.div`
   px-[12px]
   border
   border-stroke-action-default
-  text-text-primary
-  text14medium
   ${(p) =>
     p.disabled
       ? "border-none bg-fill-bg-tertiary pointer-events-none"
@@ -47,7 +45,7 @@ export default function WalletExtension({ wallet, onClick }) {
     <Wrapper disabled={disabled} onClick={() => onClick(wallet)}>
       <div className="flex items-center gap-[8px]">
         <Logo className={wallet.title} alt={wallet.title} />
-        <span className="wallet-title">{wallet.title}</span>
+        <span className="text-text-primary text14medium">{wallet.title}</span>
       </div>
       <div>
         {loadingInjectedWeb3 ? (

@@ -7,14 +7,11 @@ import { encodeAddress } from "@polkadot/util-crypto";
 import { ChainSS58Format, identityChainMap } from "@osn/constants";
 import { fetchIdentity } from "@osn/common/es/services/identity";
 import { IdentityIcon } from "@osn/common-ui";
+import tw from "tailwind-styled-components";
 
-const Text = styled.p`
-  color: #1e2134;
-  margin: 0;
-`;
-
-const TextMinor = styled(Text)`
-  color: #9da9bb;
+const TextMinor = tw.p`
+  m-0
+  text-text-tertiary
 `;
 
 const ItemWrapper = styled.div`

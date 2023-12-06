@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import NProgress from "nprogress";
 import Router from "next/router";
 import store from "@/store";
-import theme from "@/styles/light";
+import { light } from "@/styles/colors";
 import { Provider } from "react-redux";
 
 import "nprogress/nprogress.css";
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={light}>
           <main className={cn(inter.className, inter.variable)}>
             <Component {...pageProps} />
           </main>

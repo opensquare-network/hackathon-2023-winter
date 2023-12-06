@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import SelectAccountPopup from "./selectAccountPopup";
 import SelectWalletPopup from "./selectWalletPopup";
+import { useDispatch } from "react-redux";
+import { setAccount } from "@/store/reducers/accountSlice";
 
 export default function ConnectWalletPopup({ open, setOpen }) {
+  const dispatch = useDispatch();
   const [walletExtensionType, setWalletExtensionType] = useState();
-  console.log(walletExtensionType);
+
+  const onConnectAccount = useCallback(
+    (account) => {
+      dispatch(
+        setAccount({
+          network: "polkadot",
+          address: account.address,
+        }),
+      );
+      setOpen(false);
+    },
+    [dispatch],
+  );
 
   if (walletExtensionType) {
     return (
@@ -12,6 +27,7 @@ export default function ConnectWalletPopup({ open, setOpen }) {
         open={open}
         setOpen={setOpen}
         walletExtensionType={walletExtensionType}
+        onConnectAccount={onConnectAccount}
       />
     );
   }

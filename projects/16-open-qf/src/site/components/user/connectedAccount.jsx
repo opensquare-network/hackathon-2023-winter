@@ -7,6 +7,7 @@ import { encodeNetworkAddress } from "@osn/common";
 import FlexBetween from "@osn/common-ui/es/styled/FlexBetween";
 import { useState } from "react";
 import { useLogout, useAccount } from "@/context/account";
+import { noop } from "lodash-es";
 
 const Wrapper = styled.div`
   position: relative;
@@ -123,7 +124,7 @@ const LogoutWrapper = styled(FlexBetween)`
   }
 `;
 
-function ConnectedAccount({ setConnectWalletModalVisible = () => {} }) {
+function ConnectedAccount({ setShowConnectPopup = noop }) {
   const [showMenu, setShowMenu] = useState(false);
   const account = useAccount();
   const logout = useLogout();
@@ -131,7 +132,7 @@ function ConnectedAccount({ setConnectWalletModalVisible = () => {} }) {
   const address = encodeNetworkAddress(account.address, network);
 
   const onSwitch = () => {
-    setConnectWalletModalVisible(true);
+    setShowConnectPopup(true);
     setShowMenu(false);
   };
 

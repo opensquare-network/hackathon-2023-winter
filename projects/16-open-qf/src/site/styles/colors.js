@@ -37,4 +37,5 @@ export const light = {
     "0px 0.75px 8px rgba(26, 33, 44, 0.06), 0px 4px 31px rgba(26, 33, 44, 0.08)",
   "--shadow-dropdown":
     "0px 4px 31px rgba(26, 33, 44, 0.06), 0px 0.751293px 8px rgba(26, 33, 44, 0.04)",
+  "--text-light-major": "var(--neutral-gray0)",
 };

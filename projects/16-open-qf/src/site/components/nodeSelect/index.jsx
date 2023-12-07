@@ -32,7 +32,7 @@ const SmallSelect = styled(FlexCenter)`
 `;
 
 const Select = styled(Flex)`
-  border: 1px solid #e0e4eb;
+  border: 1px solid ${(p) => p.theme["--stroke-action-default"]};
   border-radius: 4px;
   height: 38px;
   padding: 0 12px;
@@ -81,9 +81,9 @@ const Item = styled(Flex)`
   line-height: 100%;
   cursor: pointer;
   white-space: nowrap;
-  color: #506176;
+  color: ${(p) => p.theme["--text-secondary"]};
   :hover {
-    background: #f6f7fa;
+    background: ${(p) => p.theme["--fill-bg-quaternary"]};
   }
   > img {
     width: 24px;
@@ -99,8 +99,8 @@ const Item = styled(Flex)`
   ${(p) =>
     p.active &&
     css`
-      color: #1e2134;
-      background: #f6f7fa;
+      color: ${(p) => p.theme["--text-primary"]};
+      background: ${(p) => p.theme["--fill-bg-quaternary"]};
     `}
 `;
 

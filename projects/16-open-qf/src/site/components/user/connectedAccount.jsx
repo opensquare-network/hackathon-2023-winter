@@ -1,6 +1,4 @@
 import styled, { css } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { accountSelector, logout } from "@/store/reducers/accountSlice";
 import { ReactComponent as ExitIcon } from "@osn/common-ui/es/Account/exit.svg";
 import { ReactComponent as CircleIcon } from "@osn/common-ui/es/Account/circle.svg";
 import { p_14_medium } from "@osn/common-ui";
@@ -8,6 +6,7 @@ import NetworkUser from "./networkUser";
 import { encodeNetworkAddress } from "@osn/common";
 import FlexBetween from "@osn/common-ui/es/styled/FlexBetween";
 import { useState } from "react";
+import { useLogout, useAccount } from "@/context/account";
 
 const Wrapper = styled.div`
   position: relative;
@@ -126,8 +125,8 @@ const LogoutWrapper = styled(FlexBetween)`
 
 function ConnectedAccount({ setConnectWalletModalVisible = () => {} }) {
   const [showMenu, setShowMenu] = useState(false);
-  const dispatch = useDispatch();
-  const account = useSelector(accountSelector);
+  const account = useAccount();
+  const logout = useLogout();
   const network = account.network;
   const address = encodeNetworkAddress(account.address, network);
 
@@ -137,7 +136,7 @@ function ConnectedAccount({ setConnectWalletModalVisible = () => {} }) {
   };
 
   const onLogout = () => {
-    dispatch(logout());
+    logout();
     setShowMenu(false);
   };
 

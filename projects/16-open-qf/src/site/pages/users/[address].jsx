@@ -4,12 +4,8 @@ import UserLayout from "@/components/layouts/userLayout";
 import UserTabs from "@/components/user/tabs";
 import UserTabsContent from "@/components/user/tabs/content";
 import { withCommonPageWrapper } from "@/utils/ssr";
-import { useRouter } from "next/router";
 
 const UserPage = withCommonPageWrapper(() => {
-  const router = useRouter();
-  router;
-
   return (
     <UserLayout>
       <Backdrop className="static h-auto top-0 z-0">

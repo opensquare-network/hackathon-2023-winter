@@ -1,25 +1,46 @@
-import { Tabs } from "@osn/common-ui";
-import { useState } from "react";
+import TabsList from "@/components/tabs/tabsList";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function UserTabs() {
   const items = [
     {
-      value: "QFpower",
+      value: "qfpower",
+      content: "QFpower",
     },
     {
-      value: "Contributions",
-      suffix: 2,
+      value: "contributions",
+      content: "Contributions",
+      activeCount: 2,
     },
     {
-      value: "Projects",
-      suffix: 3,
+      value: "projects",
+      content: "Projects",
+      activeCount: 3,
     },
   ];
-  const [value, setValue] = useState(items[0].value);
+
+  const router = useRouter();
+  const address = router.query.address;
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get("tab");
 
   return (
     <div className="flex">
-      <Tabs items={items} value={value} setValue={setValue} />
+      <TabsList
+        items={items}
+        activeTab={activeTab}
+        onTabClick={(tab) => {
+          router.replace(
+            {
+              pathname: `/users/${address}`,
+              search: `?tab=${tab.value}`,
+            },
+            null,
+            { shallow: true },
+          );
+        }}
+      />
     </div>
   );
 }

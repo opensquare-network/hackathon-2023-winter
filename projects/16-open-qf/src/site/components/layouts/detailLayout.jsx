@@ -1,5 +1,6 @@
 import MainContainer from "../containers/main";
 import AppLayout from "./appLayout";
+import Backdrop from "./backdrop";
 
 export default function DetailLayout({
   backdrop,
@@ -8,7 +9,8 @@ export default function DetailLayout({
   ...props
 }) {
   return (
-    <AppLayout backdrop={backdrop} {...props}>
+    <AppLayout {...props}>
+      <Backdrop>{backdrop}</Backdrop>
       <MainContainer>
         <div className="flex gap-[20px]">
           <div className="flex grow">{children}</div>

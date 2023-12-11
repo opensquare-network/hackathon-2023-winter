@@ -1,8 +1,9 @@
 import { USER_INFO, USER_POWER } from "@/fixtures/user";
 import { cn } from "@/utils";
-import { addressEllipsis } from "@osn/common";
 import { PieChart } from "react-minimal-pie-chart";
 import Avatar from "../accountSelector/avatar";
+import Copy from "../copy";
+import IdentityOrAddr from "./identityOrAddr";
 
 export default function UserInfo() {
   return (
@@ -13,10 +14,21 @@ export default function UserInfo() {
             <Avatar address={USER_INFO.address} size={64} />
           </div>
           <div className="mt-4 text-text-primary text24bold">
-            {addressEllipsis(USER_INFO.address)}
+            <IdentityOrAddr
+              noLink
+              noIcon
+              className="[&_*]:!text24bold"
+              address={USER_INFO.address}
+            />
           </div>
-          <div className="mt-1 text14medium text-text-tertiary">
-            {addressEllipsis(USER_INFO.address)}
+          <div className="mt-1 text14medium text-text-tertiary flex items-center">
+            <IdentityOrAddr
+              noLink
+              noIcon
+              className="[&_*]:!text14medium"
+              address={USER_INFO.address}
+            />
+            <Copy text={USER_INFO.address} className="ml-1" />
           </div>
         </div>
         <QFpowerPie

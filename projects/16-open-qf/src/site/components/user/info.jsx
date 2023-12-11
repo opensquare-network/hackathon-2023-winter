@@ -2,13 +2,16 @@ import { USER_INFO, USER_POWER } from "@/fixtures/user";
 import { cn } from "@/utils";
 import { addressEllipsis } from "@osn/common";
 import { PieChart } from "react-minimal-pie-chart";
+import Avatar from "../accountSelector/avatar";
 
 export default function UserInfo() {
   return (
     <div className="space-y-5">
       <div className="flex gap-5 justify-between">
         <div>
-          <div>avatar</div>
+          <div>
+            <Avatar address={USER_INFO.address} size={64} />
+          </div>
           <div className="mt-4 text-text-primary text24bold">
             {addressEllipsis(USER_INFO.address)}
           </div>

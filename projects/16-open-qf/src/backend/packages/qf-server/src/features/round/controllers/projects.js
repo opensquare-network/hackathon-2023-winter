@@ -1,16 +1,18 @@
+const { qf: { getProjectCol } } = require("@open-qf/mongo");
 const { extractPage } = require("../../../utils/extractPage");
-const { qf: { getRoundCol } } = require("@open-qf/mongo");
 
-async function getRounds(ctx) {
+async function getRoundProjects(ctx) {
   const { page, pageSize } = extractPage(ctx);
   if (pageSize === 0 || page < 0) {
     ctx.status = 400;
     return;
   }
 
-  const col = await getRoundCol();
+  const { id } = ctx.params;
+
+  const col = await getProjectCol();
   const items = await col
-    .find({}, { projection: { _id: 0 } })
+    .find({ roundId: parseInt(id) }, { projection: { _id: 0 } })
     .sort({ id: -1 })
     .skip(page * pageSize)
     .limit(pageSize)
@@ -26,5 +28,5 @@ async function getRounds(ctx) {
 }
 
 module.exports = {
-  getRounds,
+  getRoundProjects,
 }

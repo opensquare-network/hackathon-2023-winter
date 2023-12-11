@@ -21,6 +21,7 @@
     "@polkadot/extension-dapp": "0.44.6",
     "@polkadot/util": "10.1.9",
     "@polkadot/util-crypto": "10.1.9",
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@reduxjs/toolkit": "^1.6.1",
     "@svgr/webpack": "^6.3.1",
     "bignumber.js": "^9.0.1",

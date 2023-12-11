@@ -23,7 +23,7 @@ export default function UserTabs() {
   const router = useRouter();
   const address = router.query.address;
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get("tab");
+  const activeTab = searchParams.get("tab") || items[0].value;
 
   return (
     <div className="flex">

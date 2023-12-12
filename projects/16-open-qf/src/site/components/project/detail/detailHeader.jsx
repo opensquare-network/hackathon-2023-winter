@@ -1,5 +1,7 @@
 import { useServerSideProps } from "@/context/serverSideProps";
 import Divider from "@/components/divider";
+import WebsiteLink from "@/components/websiteLink";
+import { cn } from "@/utils";
 
 function MetaItem({ title, children }) {
   return (
@@ -22,7 +24,11 @@ function Meta() {
           {(detail.categories || []).map((item, index) => (
             <span
               key={index}
-              className="px-[8px] py-[2px] rounded-[10px] text12medium text-text-secondary border border-stroke-action-default"
+              className={cn(
+                "px-[8px] py-[2px]",
+                "text12medium text-text-secondary",
+                "rounded-[10px] border border-stroke-action-default",
+              )}
             >
               {item}
             </span>
@@ -30,7 +36,11 @@ function Meta() {
         </div>
       </MetaItem>
       <MetaItem title="Related links">
-        <span></span>
+        <div className="flex gap-[8px] flex-wrap">
+          {(detail.relatedLinks || []).map((item, index) => (
+            <WebsiteLink key={index} href={item} />
+          ))}
+        </div>
       </MetaItem>
     </div>
   );

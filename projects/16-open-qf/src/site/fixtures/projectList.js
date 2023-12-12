@@ -11,5 +11,19 @@ export const PROJECTS_DETAIL_DATA = [
 - Sed sit sit ultricies in id aliquet tortor.
 - Facilisis vel egestas eu integer luctus eget mollis mauris nulla.
 - Egestas sollicitudin vulputate sed tellus quam dui magna adipiscing malesuada.`,
+    relatedLinks: [
+      "https://explorer.polkascan.io/",
+      "https://polkascan.org/",
+      "https://twitter.com/polkascan",
+      "https://github.com/polkascan",
+    ],
+    contributors: [
+      {
+        address: "12ZBQqk7SD9qA7qPwpzAND6ZznXtgZuCMFWZr8xpdsVdbeva",
+        amount: "1234500000000",
+        symbol: "DOT",
+        timestamp: 1702288751205,
+      },
+    ],
   },
 ];

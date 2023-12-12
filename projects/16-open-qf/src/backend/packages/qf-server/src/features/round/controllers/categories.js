@@ -1,7 +1,10 @@
-const { category } = require("../../../utils/consts/category");
+const {
+  qf: { getProjectCol },
+} = require("@open-qf/mongo");
 
 async function getCategories(ctx) {
-  ctx.body = Object.entries(category).map(([id, display]) => ({ id, display }));
+  const col = await getProjectCol();
+  ctx.body = await col.distinct("category");
 }
 
 module.exports = {

@@ -22,7 +22,13 @@ async function updateReferendaReferendum(index, updates = {}) {
   await col.updateOne({ index }, update);
 }
 
+async function getReferendaReferendum(index) {
+  const col = await getReferendaReferendumCol();
+  return await col.findOne({ index });
+}
+
 module.exports = {
   insertReferendaReferendum,
   updateReferendaReferendum,
+  getReferendaReferendum,
 }

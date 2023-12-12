@@ -18,7 +18,7 @@ export default function Card({
         "shadow-shadow-card-default",
         hoverable && "hover:shadow-shadow-card-hover",
         "[&_.osn-card]:shadow-none [&_.osn-card]:bg-transparent [&_.osn-card]:h-full [&_.osn-card]:w-full [&_.osn-card]:flex-1",
-        "[&_.osn-card-body]:w-full [&_.osn-card-body]:h-full",
+        "[&_.osn-card-body]:w-full [&_.osn-card-body]:h-full [&_.osn-card-body]:flex [&_.osn-card-body]:flex-col",
         className,
       )}
     >

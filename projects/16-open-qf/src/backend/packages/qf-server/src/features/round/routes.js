@@ -12,6 +12,6 @@ router.get("/rounds", getRounds);
 router.get("/rounds/:id(\\d+)", getRound);
 router.get("/rounds/:id(\\d+)/projects", getRoundProjects);
 router.get("/rounds/:roundId(\\d+)/projects/:projectId(\\d+)", getProject);
-router.get("/categories", getCategories);
+router.get("/rounds/:id(\\d+)/categories", getCategories);
 
 module.exports = router;

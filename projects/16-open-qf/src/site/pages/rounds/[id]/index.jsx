@@ -24,7 +24,9 @@ export const getServerSideProps = async (context) => {
   const rounds = roundsResult?.items ?? [];
   const id = Number(context.params.id);
   const round = find(rounds, { id });
-  const { result: projectsResult } = await getRoundProjectsList(id);
+  const { result: projectsResult } = await getRoundProjectsList(id, {
+    page_size: 25,
+  });
   const projects = projectsResult?.items ?? [];
 
   return {

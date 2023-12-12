@@ -3,10 +3,13 @@ import { Button } from "@/components/button";
 import { RoundCardMetadata } from "@/components/card/round";
 import { abbreviateBigNumber, toPrecision } from "@osn/common";
 import { DECIMALS } from "@/utils/constants";
+import { cn } from "@/utils";
 
 export default function RoundProjectInfo({ data }) {
   return (
-    <div className="grid grid-cols-3 gap-5 max-sm:grid-cols-1">
+    <div
+      className={cn("grid grid-cols-3 gap-5", "max-sm:flex max-sm:flex-col")}
+    >
       <Card
         className="col-span-2"
         head={

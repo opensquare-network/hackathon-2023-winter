@@ -7,9 +7,11 @@ const {
   governance: { getGovernanceDb },
 } = require("@open-qf/mongo");
 const { handleEvents } = require("./events");
+const { handleCalls } = require("./calls");
 
 async function handleBlock({ block, events, height }) {
   const blockIndexer = getBlockIndexer(block);
+  await handleExtrinsics(block.extrinsics, events, blockIndexer, handleCalls);
   await handleEvents(events, block?.extrinsics, blockIndexer);
 
   const db = getGovernanceDb();

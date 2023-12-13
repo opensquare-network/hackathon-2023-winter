@@ -1,7 +1,8 @@
 const {
   chain: { getBlockIndexer },
-  scan: { oneStepScan, handleExtrinsics },
+  scan: { oneStepScan, handleExtrinsics, scanKnownHeights },
   utils: { sleep },
+  env: { firstScanKnowHeights },
 } = require("@osn/scan-common");
 const {
   governance: { getGovernanceDb },
@@ -29,6 +30,14 @@ async function handleBlock({ block, events, height }) {
 async function scan() {
   const db = getGovernanceDb();
   let toScanHeight = await db.getNextScanHeight();
+
+  if (firstScanKnowHeights()) {
+    await scanKnownHeights(
+      toScanHeight,
+      undefined,
+      handleBlock,
+    );
+  }
 
   /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
   while (true) {

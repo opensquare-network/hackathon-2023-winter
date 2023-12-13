@@ -13,7 +13,7 @@ export default function UserTabContributionsContent() {
           <div
             className={cn(
               "flex items-center gap-6",
-              "max-sm:flex-col max-sm:items-start",
+              "max-sm:flex-col max-sm:items-start max-sm:gap-4",
             )}
           >
             <IpfsImage className="w-12 h-12" cid={item.logoCid} />

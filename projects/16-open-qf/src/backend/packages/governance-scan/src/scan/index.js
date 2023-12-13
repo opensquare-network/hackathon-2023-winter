@@ -8,11 +8,19 @@ const {
 } = require("@open-qf/mongo");
 const { handleEvents } = require("./events");
 const { handleCalls } = require("./calls");
+const { updateUnFinalReferendaVotes } = require("./jobs/referenda/votes");
+const { clearConvictionDelegationMark } = require("../store/blockConvictionDelegation");
+const { clearConvictionVoteHeight } = require("../store/convictionVote");
 
 async function handleBlock({ block, events, height }) {
   const blockIndexer = getBlockIndexer(block);
   await handleExtrinsics(block.extrinsics, events, blockIndexer, handleCalls);
   await handleEvents(events, block?.extrinsics, blockIndexer);
+
+  await updateUnFinalReferendaVotes(blockIndexer);
+
+  clearConvictionDelegationMark(blockIndexer.blockHeight);
+  clearConvictionVoteHeight(blockIndexer.blockHeight);
 
   const db = getGovernanceDb();
   await db.updateScanHeight(height);

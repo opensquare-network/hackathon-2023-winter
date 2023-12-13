@@ -27,8 +27,14 @@ async function getReferendaReferendum(index) {
   return await col.findOne({ index });
 }
 
+async function getUnFinalReferenda() {
+  const col = await getReferendaReferendumCol();
+  return await col.find({ isFinal: false }, { projection: { _id: 0, index: 1, trackId: 1 } }).toArray();
+}
+
 module.exports = {
   insertReferendaReferendum,
   updateReferendaReferendum,
   getReferendaReferendum,
+  getUnFinalReferenda,
 }

@@ -37,7 +37,7 @@ export function RoundCardMetadata({ data, linkTitle = true }) {
       </div>
 
       <div>
-        <Tag>{data.type || "TODO"}</Tag>
+        <Tag>{data.category}</Tag>
       </div>
     </div>
   );
@@ -73,10 +73,7 @@ export default function RoundCard({
             toPrecision(data.asset.amount, DECIMALS),
           )} ${data.asset.id}`}
         />
-        <FooterItem
-          label="Contributors"
-          content={data.contributors || "TODO"}
-        />
+        <FooterItem label="Contributors" content={data.contributorsCount} />
         <FooterItem label="Program Funders" content={data.founders?.[0]} />
         <div className={cn("flex items-end justify-end")}>
           <Link href="/apply" className="max-sm:w-full">

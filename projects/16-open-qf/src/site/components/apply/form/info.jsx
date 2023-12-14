@@ -23,7 +23,7 @@ export default function ApplyProjectInfoForm({}) {
   return (
     <Card>
       <div className="space-y-5">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 gap-5 max-sm:grid-cols-1">
           <FormItem label="Logo" description="Suggested size: 512x512px">
             <UploadImageField
               onUploaded={(url) => {

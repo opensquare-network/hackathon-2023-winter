@@ -1,12 +1,16 @@
 import Card from "@/components/card";
 import FormItem from "@/components/form/item";
+import {
+  applyFormValueSelector,
+  updateApplyFormValue,
+} from "@/store/reducers/applySlice";
 import { Input, ChainIcon } from "@osn/common-ui";
-import { noop } from "lodash-es";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function ApplyProjectDonationForm({
-  formValue = {},
-  setFormValue = noop,
-}) {
+export default function ApplyProjectDonationForm({}) {
+  const dispatch = useDispatch();
+  const formValue = useSelector(applyFormValueSelector);
+
   return (
     <Card>
       <FormItem
@@ -19,7 +23,7 @@ export default function ApplyProjectDonationForm({
           suffix={<ChainIcon chainName="polkadot" />}
           value={formValue.donation}
           onChange={(e) => {
-            setFormValue({ ...formValue, donation: e.target.value });
+            dispatch(updateApplyFormValue({ donation: e.target.value }));
           }}
         />
       </FormItem>

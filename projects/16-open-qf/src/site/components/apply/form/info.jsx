@@ -10,14 +10,15 @@ import RichEditor from "@osn/common-ui/es/RichEditor";
 import { CATEGORIES } from "@/utils/constants";
 import Tag from "@/components/tag";
 import UploadImageField from "@/components/form/uploadImageField";
+import {
+  applyFormValueSelector,
+  updateApplyFormValue,
+} from "@/store/reducers/applySlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function ApplyProjectInfoForm({
-  formValue = {},
-  setFormValue = noop,
-}) {
-  function updateFormValue(key, value) {
-    setFormValue({ ...formValue, [key]: value });
-  }
+export default function ApplyProjectInfoForm({}) {
+  const dispatch = useDispatch();
+  const formValue = useSelector(applyFormValueSelector);
 
   return (
     <Card>
@@ -26,7 +27,7 @@ export default function ApplyProjectInfoForm({
           <FormItem label="Logo" description="Suggested size: 512x512px">
             <UploadImageField
               onUploaded={(url) => {
-                updateFormValue("logoCid", url);
+                dispatch(updateApplyFormValue({ logoCid: url }));
               }}
             />
           </FormItem>
@@ -37,7 +38,7 @@ export default function ApplyProjectInfoForm({
             <UploadImageField
               className="w-40 rounded-none"
               onUploaded={(url) => {
-                updateFormValue("bannerCid", url);
+                dispatch(updateApplyFormValue({ bannerCid: url }));
               }}
             />
           </FormItem>
@@ -49,7 +50,7 @@ export default function ApplyProjectInfoForm({
             autoComplete="off"
             value={formValue.name}
             onChange={(e) => {
-              updateFormValue("name", e.target.value);
+              dispatch(updateApplyFormValue({ name: e.target.value }));
             }}
           />
         </FormItem>
@@ -63,7 +64,7 @@ export default function ApplyProjectInfoForm({
             id="summary"
             value={formValue.summary}
             onChange={(e) => {
-              updateFormValue("summary", e.target.value);
+              dispatch(updateApplyFormValue({ summary: e.target.value }));
             }}
           />
         </FormItem>
@@ -75,7 +76,7 @@ export default function ApplyProjectInfoForm({
           <CategoryTagsField
             value={formValue.category}
             onChangeValue={(value) => {
-              updateFormValue("category", value);
+              dispatch(updateApplyFormValue({ category: value }));
             }}
           />
         </FormItem>
@@ -84,7 +85,7 @@ export default function ApplyProjectInfoForm({
           <RelatedLinksField
             defaultValue={formValue.links}
             onChangeValue={(value) => {
-              updateFormValue("links", value);
+              dispatch(updateApplyFormValue({ links: value }));
             }}
           />
         </FormItem>
@@ -96,7 +97,7 @@ export default function ApplyProjectInfoForm({
           <RichEditor
             content={formValue.description}
             setContent={(value) => {
-              updateFormValue("description", value);
+              dispatch(updateApplyFormValue({ description: value }));
             }}
             showButtons={false}
           />

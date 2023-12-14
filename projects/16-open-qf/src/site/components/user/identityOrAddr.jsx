@@ -49,21 +49,21 @@ export default function IdentityOrAddr({
       )}
       href={`/users/${ss58Address}`}
     >
-      {/* {identity?.info && identity?.info?.status !== "NO_ID" ? ( */}
-      <>
-        {!noIcon && (
-          <IdentityIcon
-            status={"VERIFIED"}
-            showTooltip
-            size={iconSize}
-            position={tooltipPosition}
-          />
-        )}
-        <span>{"OpenSquare"}</span>
-      </>
-      {/* ) : (
+      {identity?.info && identity?.info?.status !== "NO_ID" ? (
+        <>
+          {!noIcon && (
+            <IdentityIcon
+              status={"VERIFIED"}
+              showTooltip
+              size={iconSize}
+              position={tooltipPosition}
+            />
+          )}
+          <span>{"OpenSquare"}</span>
+        </>
+      ) : (
         <span>{addressEllipsis(ss58Address)}</span>
-      )} */}
+      )}
     </Link>
   );
 }

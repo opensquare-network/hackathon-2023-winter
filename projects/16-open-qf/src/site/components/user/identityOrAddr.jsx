@@ -41,6 +41,7 @@ export default function IdentityOrAddr({
   return (
     <Link
       className={cn(
+        "flex gap-[4px]",
         "text14medium",
         "hover:underline hover:text-inherit",
         noLink && "pointer-events-none",
@@ -48,21 +49,21 @@ export default function IdentityOrAddr({
       )}
       href={`/users/${ss58Address}`}
     >
-      {identity?.info && identity?.info?.status !== "NO_ID" ? (
-        <>
-          {!noIcon && (
-            <IdentityIcon
-              status={identity.info.status}
-              showTooltip
-              size={iconSize}
-              position={tooltipPosition}
-            />
-          )}
-          <span>{identity.info.display}</span>
-        </>
-      ) : (
+      {/* {identity?.info && identity?.info?.status !== "NO_ID" ? ( */}
+      <>
+        {!noIcon && (
+          <IdentityIcon
+            status={"VERIFIED"}
+            showTooltip
+            size={iconSize}
+            position={tooltipPosition}
+          />
+        )}
+        <span>{"OpenSquare"}</span>
+      </>
+      {/* ) : (
         <span>{addressEllipsis(ss58Address)}</span>
-      )}
+      )} */}
     </Link>
   );
 }

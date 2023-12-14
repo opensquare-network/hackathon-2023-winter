@@ -10,24 +10,13 @@ import RichEditor from "@osn/common-ui/es/RichEditor";
 import { CATEGORIES } from "@/utils/constants";
 import Tag from "@/components/tag";
 
-export default function ApplyProjectInfoForm() {
-  const [formValue, setFormValue] = useState({
-    name: "",
-    summary: "",
-    category: "",
-    links: [""],
-    description: "",
-    bannerCid: "",
-    logoCid: "",
-  });
-
+export default function ApplyProjectInfoForm({
+  formValue = {},
+  setFormValue = noop,
+}) {
   function updateFormValue(key, value) {
     setFormValue({ ...formValue, [key]: value });
   }
-
-  useShallowCompareEffect(() => {
-    console.log(formValue);
-  }, [formValue]);
 
   return (
     <Card>

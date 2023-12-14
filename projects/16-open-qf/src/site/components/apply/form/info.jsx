@@ -9,6 +9,7 @@ import { useShallowCompareEffect } from "react-use";
 import RichEditor from "@osn/common-ui/es/RichEditor";
 import { CATEGORIES } from "@/utils/constants";
 import Tag from "@/components/tag";
+import UploadImageField from "@/components/form/uploadImageField";
 
 export default function ApplyProjectInfoForm({
   formValue = {},
@@ -22,8 +23,24 @@ export default function ApplyProjectInfoForm({
     <Card>
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-5">
-          <FormItem label="Logo"></FormItem>
-          <FormItem label="Cover Image"></FormItem>
+          <FormItem label="Logo" description="Suggested size: 512x512px">
+            <UploadImageField
+              onUploaded={(url) => {
+                updateFormValue("logoCid", url);
+              }}
+            />
+          </FormItem>
+          <FormItem
+            label="Cover Image"
+            description="Suggested size: 1440x480px, Displayed in the header of the project page"
+          >
+            <UploadImageField
+              className="w-40 rounded-none"
+              onUploaded={(url) => {
+                updateFormValue("bannerCid", url);
+              }}
+            />
+          </FormItem>
         </div>
 
         <FormItem htmlFor="name" label="Project Name">

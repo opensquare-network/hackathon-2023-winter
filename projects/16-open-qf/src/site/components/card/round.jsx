@@ -73,7 +73,10 @@ export default function RoundCard({
             toPrecision(data.asset.amount, DECIMALS),
           )} ${data.asset.id}`}
         />
-        <FooterItem label="Contributors" content={data.contributorsCount} />
+        <FooterItem
+          label="Contributors"
+          content={data.contributorsCount || 0}
+        />
         <FooterItem label="Program Funders" content={data.founders?.[0]} />
         <div className={cn("flex items-end justify-end")}>
           <Link href="/apply" className="max-sm:w-full">

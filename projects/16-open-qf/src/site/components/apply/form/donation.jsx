@@ -1,7 +1,6 @@
 import Card from "@/components/card";
 import FormItem from "@/components/form/item";
-import { ChainIcon } from "@osn/common-ui";
-import { Input } from "@osn/common-ui";
+import { Input, ChainIcon } from "@osn/common-ui";
 
 export default function ApplyProjectDonationForm() {
   return (

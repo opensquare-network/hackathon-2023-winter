@@ -53,13 +53,13 @@ export default function IdentityOrAddr({
         <>
           {!noIcon && (
             <IdentityIcon
-              status={"VERIFIED"}
+              status={identity.info.status}
               showTooltip
               size={iconSize}
               position={tooltipPosition}
             />
           )}
-          <span>{"OpenSquare"}</span>
+          <span>{identity.info.display}</span>
         </>
       ) : (
         <span>{addressEllipsis(ss58Address)}</span>

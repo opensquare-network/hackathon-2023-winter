@@ -7,6 +7,8 @@ import { noop } from "lodash-es";
 import { useState } from "react";
 import { useShallowCompareEffect } from "react-use";
 import RichEditor from "@osn/common-ui/es/RichEditor";
+import { CATEGORIES } from "@/utils/constants";
+import Tag from "@/components/tag";
 
 export default function ApplyProjectInfoForm() {
   const [formValue, setFormValue] = useState({
@@ -63,7 +65,14 @@ export default function ApplyProjectInfoForm() {
         <FormItem
           label="Category"
           description="Please select a category for this project to get the right contributors"
-        ></FormItem>
+        >
+          <CategoryTagsField
+            value={formValue.category}
+            onChangeValue={(value) => {
+              updateFormValue("category", value);
+            }}
+          />
+        </FormItem>
 
         <FormItem label="Related Links">
           <RelatedLinksField
@@ -91,7 +100,23 @@ export default function ApplyProjectInfoForm() {
   );
 }
 
-function CategoryTagsField() {}
+function CategoryTagsField({ value = "", onChangeValue = noop }) {
+  const categories = Object.values(CATEGORIES);
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {categories.map((category) => (
+        <Tag
+          key={category}
+          active={value === category}
+          onClick={() => onChangeValue(category)}
+        >
+          {category}
+        </Tag>
+      ))}
+    </div>
+  );
+}
 
 function RelatedLinksField({ defaultValue = [], onChangeValue = noop }) {
   const [links, setLinks] = useState(defaultValue);

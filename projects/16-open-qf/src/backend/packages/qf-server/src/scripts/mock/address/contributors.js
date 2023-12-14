@@ -16,6 +16,7 @@ async function saveMockContributors() {
     const projectId = randomIntFromInterval(1, 12);
     const obj = {
       address,
+      roundId: 1,
       projectId,
       balance,
       isMock: true,

@@ -12,9 +12,11 @@ export default function Header() {
           <span className="ml-3 text18semibold">OpenQF</span>
         </div>
 
-        <Connect />
+        <div className="max-sm:hidden">
+          <Connect />
+        </div>
 
-        <HeaderMobileMenu />
+        <HeaderMobileMenu className="sm:hidden" />
       </div>
     </CommonHeader>
   );

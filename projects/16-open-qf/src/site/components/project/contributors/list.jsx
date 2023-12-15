@@ -21,12 +21,12 @@ export default function ContributionsList() {
   return (
     <div>
       <div className="flex flex-col w-full">
-        {contributors.items.map((item, index) => {
+        {contributors.items.map((item) => {
           const amount = toPrecision(item.balance, 10);
 
           return (
             <div
-              key={index}
+              key={item.address}
               className={cn(
                 "grid grid-cols-3 py-5",
                 "max-sm:grid-cols-2",

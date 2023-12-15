@@ -6,7 +6,7 @@ import { cn } from "@/utils";
 import { useState } from "react";
 import Dot from "../dot";
 import NoData from "../noData";
-import ProjectCard from "./projectCard";
+import ProjectCard from "../card/project";
 
 export default function RoundProjectList({
   categories: categoriesProp = [],

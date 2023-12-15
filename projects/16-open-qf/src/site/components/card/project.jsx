@@ -40,7 +40,7 @@ function Description({ project }) {
   );
 }
 
-function TotalRaised() {
+function TotalRaised({ project }) {
   return (
     <div className="mt-5 space-y-1">
       <div className="text14medium text-text-tertiary">Total Raised</div>
@@ -91,13 +91,13 @@ function CardBase({ className, project, children }) {
 }
 
 export function SimpleProjectCard({ project }) {
-  return <CardBase className="shadow-none" project={project} />;
+  return <CardBase className="!shadow-none" project={project} />;
 }
 
 export default function ProjectCard({ project }) {
   return (
     <CardBase project={project}>
-      <TotalRaised />
+      <TotalRaised project={project} />
     </CardBase>
   );
 }

@@ -84,8 +84,8 @@ function ProjectsList({ projects = [] }) {
         "max-sm:grid-cols-1",
       )}
     >
-      {projects.map((project) => (
-        <ProjectCard project={project} />
+      {projects.map((project, index) => (
+        <ProjectCard key={index} project={project} />
       ))}
     </div>
   );

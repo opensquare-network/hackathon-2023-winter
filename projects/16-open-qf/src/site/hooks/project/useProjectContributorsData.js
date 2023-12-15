@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useUpdateEffect } from "react-use";
 
-export function useProjectContributorsData(page) {
+export function useProjectContributorsData(page, page_size) {
   const { contributors } = useServerSideProps();
   const [data, setData] = useState(contributors);
   const [loading, setLoading] = useState(false);
@@ -16,6 +16,7 @@ export function useProjectContributorsData(page) {
 
     getProjectContributors(roundId, projectId, {
       page: page - 1,
+      page_size,
     })
       .then((resp) => {
         if (resp?.result) {

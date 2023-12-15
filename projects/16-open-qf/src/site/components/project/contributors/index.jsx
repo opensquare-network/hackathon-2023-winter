@@ -4,7 +4,7 @@ import ContributionsList from "./list";
 
 export default function Contributions() {
   const { contributors } = useServerSideProps();
-  const count = contributors?.items?.length || 0;
+  const count = contributors?.total || 0;
 
   if (!count) {
     return null;

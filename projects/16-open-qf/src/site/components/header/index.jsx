@@ -1,6 +1,7 @@
 import { Header as CommonHeader } from "@osn/common-ui";
 import Connect from "../connect";
 import Link from "next/link";
+import HeaderMobileMenu from "./menu";
 
 export default function Header() {
   return (
@@ -12,6 +13,8 @@ export default function Header() {
         </div>
 
         <Connect />
+
+        <HeaderMobileMenu />
       </div>
     </CommonHeader>
   );

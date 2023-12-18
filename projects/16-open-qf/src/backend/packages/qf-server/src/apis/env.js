@@ -6,7 +6,7 @@ const chainEndpointPrefixMap = {
 };
 
 // [chain, endpoints]
-let endpoints = [];
+let endpoints = null;
 
 function loadEndpoints() {
   return Object.values(chains).map((chain) => {
@@ -21,7 +21,7 @@ function loadEndpoints() {
 }
 
 function getEndpoints() {
-  if (endpoints.length > 0) {
+  if (endpoints) {
     return endpoints;
   }
 

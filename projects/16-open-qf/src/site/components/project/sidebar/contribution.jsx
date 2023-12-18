@@ -1,8 +1,8 @@
 import tw from "tailwind-styled-components";
 import { Button } from "@/components/button";
 import { useServerSideProps } from "@/context/serverSideProps";
-import NetworkUser from "../user/networkUser";
-import DonatePopup from "../donatePopup";
+import NetworkUser from "@/components/user/networkUser";
+import DonatePopup from "@/components/donatePopup";
 import { useState } from "react";
 import { useAccount } from "@/context/account";
 import LocaleSymbol from "@/components/common/localeSymbol";
@@ -13,20 +13,12 @@ const Info = ({ title, value }) => {
   return (
     <div className="flex flex-col gap-[4px] items-center">
       <span className="text14medium text-text-tertiary">{title}</span>
-      <span className="text24bold ntext-text-primary">{value}</span>
+      <span className="text20semibold text-text-primary">{value}</span>
     </div>
   );
 };
 
-function getDecimalsFromSymbol(symbol) {
-  if (symbol === "DOT") {
-    return 10;
-  }
-
-  throw new Error(`Unknown symbol: ${ symbol }`);
-}
-
-export default function Sidebar() {
+export default function Contribution() {
   const account = useAccount();
   const [showDonatePopup, setShowDonatePopup] = useState(false);
   const { detail } = useServerSideProps();

@@ -4,7 +4,7 @@ const { chains } = require("../consts");
 
 jest.setTimeout(3000000);
 
-describe("Query", () => {
+describe("Apis", () => {
   const originalEnv = process.env;
 
   beforeAll(async () => {

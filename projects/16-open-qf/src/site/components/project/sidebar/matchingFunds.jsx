@@ -31,7 +31,7 @@ function Chart({ percentage }) {
             "text20semibold text-text-primary",
           )}
         >
-          25.00%
+          {(percentage || 0)?.toFixed(2)}%
         </span>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default function MatchingFunds() {
         <SvgSystemReward className="[&_path]:fill-text-tertiary" />
       </div>
       <div className="flex flex-col gap-[16px]">
-        <Chart percentage={25} />
+        <Chart percentage={15} />
         <div className="flex gap-[16px] justify-between">
           <Item title="Matching Pool" value="10,000 DOT" />
           <Item title="Matching Funds" value="2,500 DOT" />

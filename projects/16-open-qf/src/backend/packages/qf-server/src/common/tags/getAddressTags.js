@@ -59,6 +59,9 @@ async function getTagsByAddress(address) {
   if (await checkGithubConnected(address)) {
     candidateTags.push(tags.find((tag) => tag.id === "isGithubConnected"));
   }
+  if (await isInDb(await getCouncilorCol(), address)) {
+    candidateTags.push(tags.find((tag) => tag.id === "isCouncilor"));
+  }
 
   return candidateTags.filter(Boolean);
 }

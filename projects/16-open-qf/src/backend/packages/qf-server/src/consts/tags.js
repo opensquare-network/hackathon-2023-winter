@@ -134,6 +134,12 @@ const tags = [
     power: 10,
     type: "Social Link",
   },
+  {
+    id: "isCouncilor",
+    name: "Councilor",
+    description: "Once to be a councilor",
+    power: 15,
+  },
 ];
 
 module.exports = {

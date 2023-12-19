@@ -48,11 +48,11 @@ export async function getServerSideProps(context) {
   return {
     props: {
       ...loadCommonServerSideProps(context),
-      projects,
-      categories,
-      activityTags,
-      userActivityTags,
-      contributions,
+      projects: projects ?? null,
+      categories: categories ?? null,
+      activityTags: activityTags ?? null,
+      userActivityTags: userActivityTags ?? null,
+      contributions: contributions ?? null,
     },
   };
 }

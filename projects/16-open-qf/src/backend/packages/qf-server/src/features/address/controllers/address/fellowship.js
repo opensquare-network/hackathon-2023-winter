@@ -1,7 +1,8 @@
 const { chains } = require("../../../../consts");
-const { checkAndGetApis, queryFromApis } = require("../../../../common");
+const { checkAndGetApis } = require("../../../../common/checkAndGetApis");
+const { queryFromApis } = require("../../../../common/queryFromApis");
 
-async function getMemberFromOneApi(api, address) {
+async function getFellowshipRankFromOneApi(api, address) {
   if (!api.query.fellowshipCollective?.members) {
     return null;
   }
@@ -17,9 +18,9 @@ async function getMemberFromOneApi(api, address) {
 
 async function getFellowshipRank(address) {
   const apis = checkAndGetApis(chains.collectives);
-  return await queryFromApis(apis, getMemberFromOneApi, [address]);
+  return await queryFromApis(apis, getFellowshipRankFromOneApi, [address]);
 }
 
 module.exports = {
   getFellowshipRank,
-}
+};

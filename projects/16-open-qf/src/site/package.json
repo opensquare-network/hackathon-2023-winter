@@ -76,7 +76,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.0",
     "jest-environment-node": "^27.3.0",
-    "jsdom": "^23.0.1",
     "postcss": "^8.4.32",
     "postcss-import": "^15.1.0",
     "postinstall-postinstall": "^2.1.0",

@@ -13,7 +13,10 @@ async function createGithubUser(ctx) {
   if (!dbUser) {
     throw new HttpError(404, "User not found");
   }
-  const { challenge } = dbUser;
+  const { challenge, expiresAt } = dbUser;
+  if (expiresAt < Date.now()) {
+    throw new HttpError(401, "Challenge expired");
+  }
 
   await checkSignature(challenge, signature, address);
   await insertGithubUser({ address, signature, user });

@@ -1,5 +1,5 @@
 const {
-  qf: { insertGithubUser },
+  qf: { upsertGithubUser },
 } = require("@open-qf/mongo");
 const { getGithubUserCol } = require("@open-qf/mongo/src/qf");
 const { HttpError } = require("../../../utils/httpError");
@@ -19,7 +19,7 @@ async function createGithubUser(ctx) {
   }
 
   await checkSignature(challenge, signature, address);
-  await insertGithubUser({ address, signature, user });
+  await upsertGithubUser({ address, signature, user });
   ctx.body = {
     success: true,
   };

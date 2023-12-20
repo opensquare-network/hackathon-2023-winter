@@ -1,8 +1,6 @@
 import { ssrNextApi } from "@/services";
-import { CookieNames } from "@/utils/cookies";
 import { to404 } from "@/utils/ssr/404";
-import Cookies from "cookies";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "@/utils/ssr/redirect";
 
 export default function GitHubCallback() {
   return <div></div>;
@@ -11,14 +9,7 @@ export default function GitHubCallback() {
 export const getServerSideProps = async (context) => {
   const { code, state } = context.query;
 
-  if (code) {
-    // Read state from cookie
-    const cookies = new Cookies(context.req, context.res);
-    const cookieState = cookies.get(CookieNames.GITHUB_OAUTH_STATE);
-    if (cookieState !== state) {
-      return to404();
-    }
-
+  if (code && state) {
     try {
       const resp = await fetch("https://github.com/login/oauth/access_token", {
         method: "POST",
@@ -66,7 +57,12 @@ export const getServerSideProps = async (context) => {
 
       const user = await userResp.json();
 
-      const { result } = await ssrNextApi.post("/github/users", user);
+      const [address, signature] = state.split(",");
+      const { result } = await ssrNextApi.post("/github/users", {
+        address,
+        signature,
+        user,
+      });
 
       if (!result) {
         throw new Error("Failed to save github user info");

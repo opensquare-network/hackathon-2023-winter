@@ -6,7 +6,10 @@ export default function AppLayout({ children }) {
     <div className="min-h-screen flex flex-col">
       <Header />
       <div className="flex-1">{children}</div>
-      <Footer />
+
+      <div className="[&_footer>div:first-child]:!max-w-7xl [&_footer>div:first-child]:sm:px-8">
+        <Footer />
+      </div>
     </div>
   );
 }

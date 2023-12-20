@@ -1,7 +1,7 @@
 import SocialLinkItem from "./socialLinkItem";
 
 const SOCIAL_LINK_TWITTER = {
-  icon: "",
+  image: "/brand/x.svg",
   power: 10,
   title: "X/Twitter",
   description: "Verify your social media presence",

@@ -9,7 +9,9 @@ export default function SocialLinkItem({ item, onClick = noop }) {
     <Card key={item.title} size="small">
       <div className="space-y-5">
         <div className="flex justify-between">
-          <div className="w-12 h-12 bg-fill-bg-quaternary"></div>
+          <div className="w-12 h-12 bg-fill-bg-quaternary">
+            <img src={item.image} alt="" />
+          </div>
           <div className="text16semibold text-text-brand-secondary">
             +{item.power}
           </div>

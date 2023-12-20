@@ -5,7 +5,7 @@ import { useAccount } from "@/context/account";
 import { signMessage } from "@/utils/signature";
 
 const SOCIAL_LINK_GITHUB = {
-  icon: "",
+  image: "/brand/github.svg",
   power: 10,
   title: "GitHub",
   description: "Verify your code contributions",

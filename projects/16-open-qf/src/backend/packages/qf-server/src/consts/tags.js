@@ -140,6 +140,12 @@ const tags = [
     description: "Once to be a councilor",
     power: 15,
   },
+  {
+    id: "isCouncilor",
+    name: "Councilor",
+    description: "Once to be a councilor",
+    power: 15,
+  },
 ];
 
 module.exports = {

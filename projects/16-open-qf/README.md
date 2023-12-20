@@ -44,6 +44,7 @@ https://qf-demo.opensquare.io
     - Role scan. It scans blocks data and extract history councilor and validator data.
     - Governance scan. It scans blocks data and extract active OpenGov voter data.
     - Treasury scan. It scans blocks data and extract treasury related data.
+    - Contributor scan. It scans balances transfer data and save the community donations.
 - Quadratic funding data processing jobs and data server.
     - It calculates contributors' matching power.
     - Projects' matched fund from public matching pool is calculated.

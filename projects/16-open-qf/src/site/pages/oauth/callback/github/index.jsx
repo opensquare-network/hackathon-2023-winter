@@ -17,7 +17,7 @@ export const getServerSideProps = async (context) => {
     method: "POST",
     body: JSON.stringify({
       client_id: process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID,
-      client_secret: process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_SECRET,
+      client_secret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
       redirect_uri: process.env.NEXT_PUBLIC_GITHUB_OAUTH_REDIRECT_URI,
       code,
     }),

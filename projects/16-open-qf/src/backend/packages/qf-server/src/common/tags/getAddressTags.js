@@ -17,10 +17,7 @@ const {
     getBountyBeneficiaryCol,
     getBountyCuratorCol,
   },
-  role: {
-    getValidatorCol,
-    getCouncilorCol,
-  }
+  role: { getValidatorCol, getCouncilorCol },
 } = require("@open-qf/mongo");
 const { isInDb } = require("./isInDb");
 const { checkGithubConnected } = require("@open-qf/mongo/src/qf");
@@ -61,12 +58,6 @@ async function getTagsByAddress(address) {
 
   if (await checkGithubConnected(address)) {
     candidateTags.push(tags.find((tag) => tag.id === "isGithubConnected"));
-  }
-  if (await isInDb(await getCouncilorCol(), address)) {
-    candidateTags.push(tags.find((tag) => tag.id === "isCouncilor"));
-  }
-  if (await isInDb(await getCouncilorCol(), address)) {
-    candidateTags.push(tags.find(tag => tag.id === "isCouncilor"));
   }
 
   return candidateTags.filter(Boolean);

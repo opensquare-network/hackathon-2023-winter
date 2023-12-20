@@ -62,7 +62,8 @@ const tags = [
   {
     id: "isTipFinder",
     name: "Tip Finder",
-    description: "Gov1 tip finder who proposed a tip and got awarded value which is > 0",
+    description:
+      "Gov1 tip finder who proposed a tip and got awarded value which is > 0",
     power: 4,
   },
   {
@@ -74,7 +75,8 @@ const tags = [
   {
     id: "isProposalBeneficiary",
     name: "Proposal Beneficiary",
-    description: "Treasury proposal beneficiary who got awarded value which is > 0",
+    description:
+      "Treasury proposal beneficiary who got awarded value which is > 0",
     power: 10,
   },
   {
@@ -107,8 +109,14 @@ const tags = [
     description: "Once to be a councilor",
     power: 15,
   },
+  {
+    id: "isGithubConnected",
+    name: "Github Connected",
+    description: "Has a github account connected",
+    power: 10,
+  },
 ];
 
 module.exports = {
   tags,
-}
+};

@@ -1,10 +1,29 @@
 import { Button } from "@osn/common-ui";
 import Card from "@/components/card";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { cn } from "@/utils";
 import { noop } from "lodash-es";
+import { newErrorToast } from "@/store/reducers/toastSlice";
+import { useDispatch } from "react-redux";
 
-export default function SocialLinkItem({ item, onClick = noop }) {
+export default function SocialLinkItem({
+  item,
+  isConnected,
+  onConnect = noop,
+}) {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const onClick = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      await onConnect();
+    } catch (e) {
+      dispatch(newErrorToast(e.message));
+    } finally {
+      setIsLoading(false);
+    }
+  }, [dispatch, onConnect]);
+
   return (
     <Card key={item.title} size="small">
       <div className="space-y-5">
@@ -25,7 +44,13 @@ export default function SocialLinkItem({ item, onClick = noop }) {
             </p>
           </div>
           <div className="flex items-end">
-            <Button onClick={onClick}>Connect</Button>
+            {isConnected ? (
+              <Button disabled>Verified</Button>
+            ) : (
+              <Button isLoading={isLoading} onClick={onClick}>
+                Connect
+              </Button>
+            )}
           </div>
         </div>
       </div>

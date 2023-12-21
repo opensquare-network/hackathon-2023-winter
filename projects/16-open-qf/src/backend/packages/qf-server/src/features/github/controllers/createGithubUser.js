@@ -38,7 +38,7 @@ async function fetchGithubUser(code) {
   });
 
   if (!userResp.ok) {
-    throw new Error("Failed to fetch user info");
+    throw new HttpError(500, "Failed to fetch user info");
   }
 
   return await userResp.json();
